@@ -8,7 +8,6 @@ import org.example.model.Theater;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
 public class SerializationExercises {
 
     public static class Exercise1 {

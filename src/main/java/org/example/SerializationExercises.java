@@ -6,8 +6,8 @@ import org.example.model.Session;
 import org.example.model.Theater;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Scanner;
+
 public class SerializationExercises {
 
     public static class Exercise1 {
@@ -47,6 +47,7 @@ public class SerializationExercises {
             try (FileWriter fileWriter = new FileWriter(filename)) {
                 fileWriter.write(json);
                 System.out.println("Saved " + filename);
+                fileWriter.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -56,73 +57,266 @@ public class SerializationExercises {
     public static class Exercise2 {
 
         public static void main(String[] args) {
-            List<Object> objectsToSerialize = new ArrayList<>();
 
-            Movie movie1 = deserializeFromJson("movie1.json", Movie.class);
-            objectsToSerialize.add(movie1);
+            // movie 1
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("movie1.json"));
+                String text;
+                while ((text = br.readLine()) != null) {
+                    System.out.println(text);
+                    Gson gson = new Gson();
+                    Movie movie1back = gson.fromJson(text, Movie.class);
+                    System.out.println(movie1back);
 
-            Movie movie2 = deserializeFromJson("movie2.json", Movie.class);
-            objectsToSerialize.add(movie2);
-
-            Theater theater1 = deserializeFromJson("theater1.json", Theater.class);
-            objectsToSerialize.add(theater1);
-
-            Theater theater2 = deserializeFromJson("theater2.json", Theater.class);
-            objectsToSerialize.add(theater2);
-
-            Session session1 = deserializeFromJson("session1.json", Session.class);
-            objectsToSerialize.add(session1);
-
-            Session session2 = deserializeFromJson("session2.json", Session.class);
-            objectsToSerialize.add(session2);
-
-            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("serialized_objects.dat"))) {
-                for (Object obj : objectsToSerialize) {
-                    oos.writeObject(obj);
+                    if (movie1back != null) {
+                        try {
+                            FileOutputStream fileOut = new FileOutputStream("save_movie1.json");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(movie1back);
+                            out.close();
+                            fileOut.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
-                System.out.println("Serialized objects successfully.");
-            } catch (IOException e) {
+                br.close();
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
-        }
 
-        private static <T> T deserializeFromJson(String filename, Class<T> clazz) {
-            try (BufferedReader bufferedReader = new BufferedReader(new FileReader(filename))) {
-                Gson gson = new Gson();
-                return gson.fromJson(bufferedReader, clazz);
-            } catch (IOException e) {
+            // movie 2
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("movie2.json"));
+                String text;
+                while ((text = br.readLine()) != null) {
+                    System.out.println(text);
+                    Gson gson = new Gson();
+                    Movie movie2back = gson.fromJson(text, Movie.class);
+                    System.out.println(movie2back);
+
+                    if (movie2back != null) {
+                        try {
+                            FileOutputStream fileOut = new FileOutputStream("save_movie2.json");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(movie2back);
+                            out.close();
+                            fileOut.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                br.close();
+            }
+            catch (IOException e) {
                 e.printStackTrace();
-                return null;
+            }
+
+            // theater 1
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("theater1.json"));
+                String text;
+                while ((text = br.readLine()) != null) {
+                    System.out.println(text);
+                    Gson gson = new Gson();
+                    Theater theater1back = gson.fromJson(text, Theater.class);
+                    System.out.println(theater1back);
+
+                    if (theater1back != null) {
+                        try {
+                            FileOutputStream fileOut = new FileOutputStream("save_theater1.json");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(theater1back);
+                            out.close();
+                            fileOut.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                br.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // theater 2
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("theater2.json"));
+                String text;
+                while ((text = br.readLine()) != null) {
+                    System.out.println(text);
+                    Gson gson = new Gson();
+                    Theater theater2back = gson.fromJson(text, Theater.class);
+                    System.out.println(theater2back);
+
+                    if (theater2back != null) {
+                        try {
+                            FileOutputStream fileOut = new FileOutputStream("save_theater2.json");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(theater2back);
+                            out.close();
+                            fileOut.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                br.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // session 1
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("session1.json"));
+                String text;
+                while ((text = br.readLine()) != null) {
+                    System.out.println(text);
+                    Gson gson = new Gson();
+                    Session session1back = gson.fromJson(text, Session.class);
+                    System.out.println(session1back);
+
+                    if (session1back != null) {
+                        try {
+                            FileOutputStream fileOut = new FileOutputStream("save_session1.json");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(session1back);
+                            out.close();
+                            fileOut.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                br.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // session 2
+            try {
+                BufferedReader br = new BufferedReader(new FileReader("session2.json"));
+                String text;
+                while ((text = br.readLine()) != null) {
+                    System.out.println(text);
+                    Gson gson = new Gson();
+                    Session session2back = gson.fromJson(text, Session.class);
+                    System.out.println(session2back);
+
+                    if (session2back != null) {
+                        try {
+                            FileOutputStream fileOut = new FileOutputStream("save_session2.json");
+                            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                            out.writeObject(session2back);
+                            out.close();
+                            fileOut.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+                br.close();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
 
 
+
     public static class Exercise3 {
 
-        public static void main(String[] args) {
-            List<Object> deserializedObjects = deserializeFromSerializedFile("serialized_objects.dat");
-        }
-
-        private static List<Object> deserializeFromSerializedFile(String filename) {
-            List<Object> deserializedObjects = new ArrayList<>();
-
-            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-                while (true) {
-                    try {
-                        Object obj = ois.readObject();
-                        deserializedObjects.add(obj);
-                    } catch (EOFException e) {
-                        // End of file reached
-                        break;
-                    }
-                }
-                System.out.println("Deserialized objects successfully.");
-            } catch (IOException | ClassNotFoundException e) {
-                e.printStackTrace();
+        public static void main(String[] args) throws IOException {
+            // movie1
+            try {
+                FileInputStream fileIn = new FileInputStream("save_movie1.json");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Movie movie1back = (Movie) in.readObject();
+                in.close();
+                fileIn.close();
+                System.out.println(movie1back);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
             }
 
-            return deserializedObjects;
+            // movie2
+            try {
+                FileInputStream fileIn = new FileInputStream("save_movie2.json");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Movie movie2back = (Movie) in.readObject();
+                in.close();
+                fileIn.close();
+                System.out.println(movie2back);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            // theater1
+            try {
+                FileInputStream fileIn = new FileInputStream("save_theater1.json");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Theater theater1back = (Theater) in.readObject();
+                in.close();
+                fileIn.close();
+                System.out.println(theater1back);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            // theater2
+            try {
+                FileInputStream fileIn = new FileInputStream("save_theater2.json");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Theater theater2back = (Theater) in.readObject();
+                in.close();
+                fileIn.close();
+                System.out.println(theater2back);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            // session1
+            try {
+                FileInputStream fileIn = new FileInputStream("save_session1.json");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Session session1back = (Session) in.readObject();
+                in.close();
+                fileIn.close();
+                System.out.println(session1back);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
+            // session2
+            try {
+                FileInputStream fileIn = new FileInputStream("save_session2.json");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                Session session2back = (Session) in.readObject();
+                in.close();
+                fileIn.close();
+                System.out.println(session2back);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+
         }
     }
 }
